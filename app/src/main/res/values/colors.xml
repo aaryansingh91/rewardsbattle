@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+<!--
+    <color name="colorPrimaryDark">#00574B</color>
+-->
+    <color name="colorPrimaryDark">#209cee</color>
+<!--    <color name="colorAccent">#D81B60</color>-->
+    <color name="colorAccent">#209cee</color>
+
+    <color name="newdarkgrey">#959595</color>
+    <color name="newblack">#343a40</color>
+    <color name="newred">#DF4D4D</color>
+    <color name="newgreen">#5eceb3</color>
+    <color name="neworange">#FF7901</color>
+    <color name="newblue">#190236</color>
+    <color name="viewbackground">#77DBDBDB</color>
+    <color name="newlightgreen">#835ECEB3</color>
+    <color name="newdisablegreen">#673DD1</color>
+
+    <!--    <color name="newblue">#363636</color>-->
+
+    <color name="background">#0F0029</color>
+    <color name="cardBg">#190236</color>
+    <color name="btn">#673DD1</color>
+    <color name="pink">#2F1465</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#E0690B</color>
+    <color name="green">#00A360</color>
+    <color name="red">#EF2E05</color>
+    <color name="grey">#959595</color>
+    <color name="blue">#1402C8</color>
+    <color name="light_blue">#4006B3</color>
+    <color name="announcement">#190236</color>
+
+    <!-- dots inactive colors -->
+
+    <!-- dots active colors -->
+
+    <array name="array_dot_active">
+        <item>@color/newred</item>
+        <item>@color/newred</item>
+        <item>@color/newred</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/newblue</item>
+        <item>@color/newblue</item>
+        <item>@color/newblue</item>
+    </array>
+</resources>

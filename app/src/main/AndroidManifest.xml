@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+    <uses-permission
+        android:name="android.permission.RECEIVE_SMS"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.READ_SMS"
+        tools:node="remove" />
+
+    <application
+        android:name=".utils.MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/battlemanialogo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/battlemanialogo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:node="merge"
+        tools:replace="android:usesCleartextTraffic,android:allowBackup,android:theme">
+        <activity
+            android:name=".ui.activities.TansactionSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.WebActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.MeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.SubGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.PlayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.TronActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.ChooseLanguageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SelectedLanguageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SingleOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.MyOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SuccessOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.ProductOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SingleProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.ProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.bep20Activity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
+        <activity
+            android:name=".ui.activities.MyRewardedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.WatchAndEarnActivity"
+            android:exported="true"
+            android:label=""
+            android:theme="@style/AppThemetest" />
+        <activity
+            android:name=".ui.activities.FpOtpVerificationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SelectedLotteryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.LotteryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.AnnouncementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.OtpVerifyActivity"
+            android:exported="true" />
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:configChanges="orientation"
+            android:label="Paypal"
+            tools:replace="android:configChanges" />
+        <activity
+            android:name="io.card.payment.DataEntryActivity"
+            android:configChanges="orientation"
+            android:label="Paypal DataEntryActivity" />
+        <activity
+            android:name=".ui.activities.IndroductionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.OfflinePaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.TermsAndConditionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.LeaderboardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.WithdrawMoneyActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.AddMoneyActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.activities.MyReferralsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.ReferandEarnActivity"
+            android:exported="true"
+            android:label=""
+            android:theme="@style/AppThemetest" />
+        <activity
+            android:name=".ui.activities.SelectedGameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.AppUpdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.HowtoActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true" />
+        <!--
+ <provider
+            android:name=".utils.GenericFileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="true" />
+        <receiver
+            android:name=".utils.InstallReceivernew"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ui.activities.FirstActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeforfirstpage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".ui.activities.MyFirebaseMessagingService"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".ui.activities.NoInternetActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SuccessJoinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SelectMatchPositionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SelectedResultActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.CustomerSupportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.AboutUsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.TopPlayerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.MyStatisticsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.SelectedTournamentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.JoiningMatch"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.TransactionSuccessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.TransactionFailActivity"
+            android:exported="true" />
+        <!--
+  <activity
+            android:name=".ui.login.TransactionSuccessActivity"
+            android:label="@string/title_activity_transaction_success" />
+        -->
+        <activity
+            android:name=".ui.activities.MyProfileActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.LudoNotificationActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name="com.paytm.pgsdk.PaytmPGActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.MyWalletActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.HomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".ui.activities.CreateNewAccount"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.LudoActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.LudoLeaderBoardActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.FriendsActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.SelectedMyContestActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name=".ui.activities.LudoChatActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeplaceholder" />
+        <activity
+            android:name="com.instamojo.android.activities.PaymentDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:exported="true"
+            tools:replace="android:exported" />
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

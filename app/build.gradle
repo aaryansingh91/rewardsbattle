@@ -1,0 +1,124 @@
+buildscript {
+    repositories {
+        google()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+}
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+def keystorePropertiesFile = rootProject.file("app/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+repositories {
+    maven { url 'https://maven.google.com' }
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+    maven {
+        url "https://s3-ap-southeast-1.amazonaws.com/godel-release/godel/"
+    }
+}
+android {
+    kotlinOptions {
+        jvmTarget = "17" // Replace with your Java version, e.g., "11" or "17".
+    }
+    compileSdkVersion= 34
+    buildToolsVersion= "34.0.0"
+    packagingOptions {
+        jniLibs {
+            excludes += ['lib/arm64-v8a/libcardioDecider.so', 'lib/arm64-v8a/libcardioRecognizer.so', 'lib/arm64-v8a/libcardioRecognizer_tegra2.so', 'lib/arm64-v8a/libopencv_core.so', 'lib/arm64-v8a/libopencv_imgproc.so', 'lib/armeabi/libcardioDecider.so', 'lib/armeabi-v7a/libcardioDecider.so', 'lib/armeabi-v7a/libcardioRecognizer.so', 'lib/armeabi-v7a/libcardioRecognizer_tegra2.so', 'lib/armeabi-v7a/libopencv_core.so', 'lib/armeabi-v7a/libopencv_imgproc.so', 'lib/mips/libcardioDecider.so', 'lib/x86/libcardioDecider.so', 'lib/x86/libcardioRecognizer.so', 'lib/x86/libcardioRecognizer_tegra2.so', 'lib/x86/libopencv_core.so', 'lib/x86/libopencv_imgproc.so', 'lib/x86_64/libcardioDecider.so', 'lib/x86_64/libcardioRecognizer.so', 'lib/x86_64/libcardioRecognizer_tegra2.so', 'lib/x86_64/libopencv_core.so', 'lib/x86_64/libopencv_imgproc.so']
+        }
+        resources {
+            excludes += ['AndroidManifest.xml', 'META-INF/DEPENDENCIES']
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.app.clashv2"
+        minSdkVersion 25
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storeFile file(keystoreProperties['releaseStoreFile'])
+            storePassword keystoreProperties['releaseStorePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        aidl true
+        buildConfig true
+    }
+    namespace 'com.app.clashv2'
+}
+
+dependencies {
+    implementation 'androidx.activity:activity-ktx:1.9.1'
+    implementation 'androidx.activity:activity:1.9.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.google.firebase:firebase-analytics:21.1.1'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    implementation 'co.paystack.android.design.widget:pinpad:1.0.8'
+    implementation 'co.paystack.android:paystack:3.1.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.instamojo:android-sdk:3.6.0'
+    implementation 'com.razorpay:checkout:1.6.38'
+    implementation project(":cashfreeSDK")
+    implementation 'com.google.firebase:firebase-messaging:23.0.8'
+    implementation 'com.google.firebase:firebase-auth:21.0.8'
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
+    implementation 'androidx.browser:browser:1.4.0'
+    implementation 'com.github.faruktoptas:FancyShowCaseView:1.3.9'
+    implementation 'com.google.firebase:firebase-database:20.0.6'
+    implementation 'com.github.androidmads:QRGenerator:1.0.1'
+    implementation 'in.payu:payu-checkout-pro:1.7.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.0'
+    implementation 'com.cashfree.pg:api:2.0.4'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'com.github.upitranzact:android-sdk:1.2.0'
+}
+apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.firebase.crashlytics'

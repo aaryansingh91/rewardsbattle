@@ -1,0 +1,12 @@
+-dontwarn com.google.android.apps.nbu.paisa.inapp.client.api.PaymentsClient 
+-dontwarn com.google.android.apps.nbu.paisa.inapp.client.api.Wallet 
+-dontwarn com.google.android.apps.nbu.paisa.inapp.client.api.WalletUtils 
+-dontwarn com.payu.olamoney.OlaMoney 
+-dontwarn com.payu.olamoney.callbacks.OlaMoneyCallback 
+-dontwarn com.payu.olamoney.utils.PayUOlaMoneyParams 
+-dontwarn com.payu.olamoney.utils.PayUOlaMoneyPaymentParams 
+-dontwarn com.payu.phonepe.PhonePe 
+-dontwarn com.payu.phonepe.callbacks.PayUPhonePeCallback 
+-dontwarn java.lang.reflect.AnnotatedType 
+-dontwarn proguard.annotation.Keep 
+-dontwarn proguard.annotation.KeepClassMembers

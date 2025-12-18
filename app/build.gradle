@@ -38,7 +38,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.app.clashv2"
+        applicationId "com.app.rewardsbattle"
         minSdkVersion 25
         targetSdkVersion 34
         versionCode 1
@@ -74,7 +74,7 @@ android {
         aidl true
         buildConfig true
     }
-    namespace 'com.app.clashv2'
+    namespace 'com.app.rewardsbattle'
 }
 
 dependencies {

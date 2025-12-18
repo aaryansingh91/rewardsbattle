@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.app.clashv2.ui.activities.OtpVerifyActivity">
+    tools:context="com.app.rewardsbattle.ui.activities.OtpVerifyActivity">
 
     <TextView
         android:id="@+id/verificationtitleid"

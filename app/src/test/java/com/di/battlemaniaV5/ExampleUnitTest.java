@@ -1,4 +1,4 @@
-package com.app.clashv2;
+package com.app.rewardsbattle;
 
 import org.junit.Test;
 

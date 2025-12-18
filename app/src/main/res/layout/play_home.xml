@@ -227,7 +227,7 @@
 
                 </LinearLayout>
 
-                <com.app.clashv2.utils.KKViewPager
+                <com.app.rewardsbattle.utils.KKViewPager
                     android:id="@+id/kk_pager"
                     android:layout_width="match_parent"
                     android:layout_height="190dp" />

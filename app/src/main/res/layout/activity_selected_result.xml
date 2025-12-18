@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/background"
     android:orientation="vertical"
-    tools:context="com.app.clashv2.ui.activities.SelectedResultActivity">
+    tools:context="com.app.rewardsbattle.ui.activities.SelectedResultActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

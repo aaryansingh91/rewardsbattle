@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "287908522484",
-    "project_id": "clashv2",
-    "storage_bucket": "clashv2.firebasestorage.app"
+    "project_number": "805900822846",
+    "project_id": "rewards-battle-4c1a4",
+    "storage_bucket": "rewards-battle-4c1a4.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:287908522484:android:7918754fab85444a71b1a1",
+        "mobilesdk_app_id": "1:805900822846:android:873a1089441b6a16fea46f",
         "android_client_info": {
-          "package_name": "com.app.clashv2"
+          "package_name": "com.app.rewardsbattle"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA29Go_v_cXz2kefwgAicFy1BbF9tAmxTU"
+          "current_key": "AIzaSyArS9h4MIVfaR-iEkJ0zQcibNBRud3K00w"
         }
       ],
       "services": {

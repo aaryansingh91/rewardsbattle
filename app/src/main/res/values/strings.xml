@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clash 2.O</string>
+    <string name="app_name">Rewards Battle eSports</string>
     <string name="title_activity_home">HomeActivity</string>
     <!--    <string name="api">https://demo.thebattlemania.com/api/</string>-->
-    <string name="api">https://clashv2.in/api/</string>
-    <string name="url" translatable="false">https://clashv2.in/</string>
+    <string name="api">https://rewardsbattle.in/api/</string>
+    <string name="url" translatable="false">https://rewardsbattle.in</string>
     <string name="Rs" formatted="false" translatable="true">\u20B9</string>
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_baner">ca-app-pub-3940256099942544/6300978111</string>

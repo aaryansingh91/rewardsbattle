@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -66,6 +67,40 @@ public class FirstActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         new TransparentStatusBar().transparentStatusAndNavigation(getWindow());
         setContentView(R.layout.activity_first);
+
+        // Setup video playback
+        android.widget.VideoView videoView = findViewById(R.id.splash_video);
+        android.net.Uri videoUri = android.net.Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.intro);
+        videoView.setVideoURI(videoUri);
+        
+        // Set video to fill screen maintaining aspect ratio
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(true);
+            mp.setVideoScalingMode(MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+            
+            // Get video and screen dimensions
+            int videoWidth = mp.getVideoWidth();
+            int videoHeight = mp.getVideoHeight();
+            android.util.DisplayMetrics displayMetrics = new android.util.DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int screenWidth = displayMetrics.widthPixels;
+            int screenHeight = displayMetrics.heightPixels;
+            
+            // Calculate scale to fill screen
+            float scaleX = (float) screenWidth / videoWidth;
+            float scaleY = (float) screenHeight / videoHeight;
+            float scale = Math.max(scaleX, scaleY);
+            
+            // Set new dimensions
+            int newWidth = (int) (videoWidth * scale);
+            int newHeight = (int) (videoHeight * scale);
+            
+            android.widget.FrameLayout.LayoutParams layoutParams = new android.widget.FrameLayout.LayoutParams(newWidth, newHeight);
+            layoutParams.gravity = android.view.Gravity.CENTER;
+            videoView.setLayoutParams(layoutParams);
+        });
+        
+        videoView.start();
 
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
         AnalyticsUtil.initialize(firebaseAnalytics);
@@ -318,6 +353,13 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        try {
+            android.widget.VideoView videoView = findViewById(R.id.splash_video);
+            if (videoView != null) {
+                videoView.stopPlayback();
+            }
+        } catch (Exception ignored) {
+        }
         try {
             loadingDialog.dismiss();
         }

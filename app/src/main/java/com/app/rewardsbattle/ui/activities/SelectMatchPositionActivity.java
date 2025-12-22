@@ -140,7 +140,7 @@ public class SelectMatchPositionActivity extends AppCompatActivity {
                 TextView textView = new TextView(this);
                 textView.setLayoutParams(lparams);
                 textView.setText(resources.getString(R.string.team_) + " " + k);
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(Color.WHITE);
                 textView.setGravity(Gravity.CENTER);
                 textView.setHeight(80);
                 layout.addView(textView);
@@ -166,7 +166,7 @@ public class SelectMatchPositionActivity extends AppCompatActivity {
                 TextView textView = new TextView(this);
                 textView.setLayoutParams(lparams);
                 textView.setText(resources.getString(R.string.team_) + " " + k);
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(Color.WHITE);
                 textView.setGravity(Gravity.CENTER);
                 textView.setHeight(80);
                 layout.addView(textView);
@@ -188,7 +188,7 @@ public class SelectMatchPositionActivity extends AppCompatActivity {
                 TextView textView = new TextView(this);
                 textView.setLayoutParams(lparams);
                 textView.setText(resources.getString(R.string.team_) + " " + k);
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(Color.WHITE);
                 textView.setGravity(Gravity.CENTER);
                 textView.setHeight(80);
                 layout.addView(textView);

@@ -36,6 +36,22 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.unity3d.services.banners.BannerView;
 import com.unity3d.services.banners.UnityBannerSize;
 import android.widget.RelativeLayout;
+import android.widget.ImageView;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.net.Uri;
+import android.telephony.PhoneNumberUtils;
+import android.util.Log;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.app.rewardsbattle.models.CurrentUser;
+import com.app.rewardsbattle.utils.UserLocalStore;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -135,6 +151,10 @@ public class PlayActivity extends AppCompatActivity {
 
             return true;
         });
+
+        // Initialize WhatsApp button
+        ImageView whatsappButton = findViewById(R.id.whatsapp_button);
+        fetchWhatsAppNumber(whatsappButton);
     }
 
 
@@ -151,6 +171,61 @@ public class PlayActivity extends AppCompatActivity {
             }
         } catch (Exception ignored) {
             // Handle any exceptions that may occur during the permission check or request
+        }
+    }
+
+    private void fetchWhatsAppNumber(ImageView whatsappButton) {
+        RequestQueue mQueue = Volley.newRequestQueue(this);
+        mQueue.getCache().clear();
+
+        String url = resources.getString(R.string.api) + "customer_support";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response.getString("customer_support"));
+                String customerPhone = jsonObject.getString("comapny_phone");
+                String customerCode = jsonObject.getString("comapny_country_code");
+                
+                String whatsappNumber = customerCode + customerPhone;
+                
+                whatsappButton.setOnClickListener(view -> openWhatsApp(whatsappNumber));
+                whatsappButton.setVisibility(View.VISIBLE);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                whatsappButton.setVisibility(View.GONE);
+            }
+        }, error -> {
+            Log.e("WhatsApp", "Failed to fetch WhatsApp number: " + error.toString());
+            whatsappButton.setVisibility(View.GONE);
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+                CurrentUser user = userLocalStore.getLoggedInUser();
+                String token = "Bearer " + user.getToken();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", token);
+                headers.put("x-localization", LocaleHelper.getPersist(context));
+                return headers;
+            }
+        };
+
+        request.setShouldCache(false);
+        mQueue.add(request);
+    }
+
+    private void openWhatsApp(String number) {
+        try {
+            number = number.replace(" ", "").replace("+", "");
+
+            Intent sendIntent = new Intent("android.intent.action.SEND");
+            sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+            sendIntent.putExtra("jid", PhoneNumberUtils.stripSeparators(number) + "@s.whatsapp.net");
+            startActivity(sendIntent);
+
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), resources.getString(R.string.whatsapp_not_found), Toast.LENGTH_SHORT).show();
         }
     }
 

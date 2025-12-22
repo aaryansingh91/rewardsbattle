@@ -352,10 +352,10 @@
     <string name="watch_more_to_earn_more">WATCH MORE TO EARN MORE</string>
     <string name="complete_tast">COMPLETE TASK</string>
     <!--activity_withdraw_money-->
-    <string name="withdraw_money">Withdraw Money</string>
+    <string name="withdraw_money">Withdraw Coins</string>
     <string name="Amount">Amount</string>
     <string name="withdraw_to">Withdraw to:</string>
-    <string name="you_can_only_withdraw_win_money">You can only withdraw win money.</string>
+    <string name="you_can_only_withdraw_win_money">You can only withdraw win Coins.</string>
     <!--activity_player_details_data-->
     <string name="join_match">Join Match</string>
     <string name="make_sure_you_have_entered_correct_information">Make sure you have entered correct information</string>

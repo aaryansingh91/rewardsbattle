@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Add Money to Wallet"
+                    android:text="Add Coin to Wallet"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/white" />
 

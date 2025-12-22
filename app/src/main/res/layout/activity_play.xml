@@ -23,4 +23,17 @@
         app:itemTextColor="@drawable/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
 
+    <ImageView
+        android:id="@+id/whatsapp_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/ic_whatsapp"
+        android:contentDescription="@string/customer_support"
+        android:clickable="true"
+        android:focusable="true" />
+
 </RelativeLayout>

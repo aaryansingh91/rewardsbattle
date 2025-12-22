@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="or Login"
+            android:text="OR"
             android:textColor="@color/white" />
 
 

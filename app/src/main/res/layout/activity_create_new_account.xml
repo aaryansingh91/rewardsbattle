@@ -267,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:clickable="true"
                         android:focusable="true"
-                        android:text="By Registering, I agree to Clashv2\'s"
+                        android:text="By Registering, I agree to RewardBattle\'s"
                         android:textColor="@color/white" />
 
 

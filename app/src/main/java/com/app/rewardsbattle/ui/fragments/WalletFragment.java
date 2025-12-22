@@ -133,7 +133,7 @@ public class WalletFragment extends Fragment {
         withdrawBtn = root.findViewById(R.id.withdrawbtn);
         transaction = root.findViewById(R.id.transaction);
         addBtn.setOnClickListener(v -> {
-            Intent intent1 = new Intent(requireContext(), AddMoneyActivity.class);
+            Intent intent1 = new Intent(requireContext(), WithdrawMoneyActivity.class);
             startActivity(intent1);
         });
         withdrawBtn.setOnClickListener(v -> {

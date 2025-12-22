@@ -295,6 +295,12 @@ public class CreateNewAccount extends AppCompatActivity {
                     return;
                 }
 
+                if (password.length() < 6) {
+                    passwordEt.setError("Password must be at least 6 characters");
+                    passwordEt.requestFocus();
+                    return;
+                }
+
                 SharedPreferences sp = getSharedPreferences("SMINFO", MODE_PRIVATE);
                 if (TextUtils.equals(sp.getString("otp", "no"), "no")) {
 

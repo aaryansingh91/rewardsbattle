@@ -4,11 +4,13 @@ import static com.android.volley.Request.Method.GET;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -51,6 +53,7 @@ public class SubGameActivity extends AppCompatActivity {
     private StaggeredGridLayoutManager manager;
     RecyclerView gameRv;
     JSONArray arr;
+    ImageView back;
     SharedPreferences sp;
 
     @Override
@@ -75,6 +78,13 @@ public class SubGameActivity extends AppCompatActivity {
         gameRv = findViewById(R.id.allgamerv);
         manager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         gameRv.setLayoutManager(manager);
+
+        back = findViewById(R.id.backfromlottery);
+        back.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+            intent.putExtra("N", "0");
+            startActivity(intent);
+        });
 
         viewallgame(gameId);
     }

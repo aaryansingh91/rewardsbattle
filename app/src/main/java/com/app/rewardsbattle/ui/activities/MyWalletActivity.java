@@ -125,7 +125,7 @@ public class MyWalletActivity extends AppCompatActivity {
         withdrawBtn = findViewById(R.id.withdrawbtn);
         transaction = findViewById(R.id.transaction);
         addBtn.setOnClickListener(v -> {
-            Intent intent1 = new Intent(getApplicationContext(), AddMoneyActivity.class);
+            Intent intent1 = new Intent(getApplicationContext(), WatchAndEarnActivity.class);
             startActivity(intent1);
         });
         withdrawBtn.setOnClickListener(v -> {

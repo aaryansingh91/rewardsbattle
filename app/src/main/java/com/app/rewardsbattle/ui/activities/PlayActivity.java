@@ -28,16 +28,14 @@ import com.app.rewardsbattle.ui.fragments.RankFragment;
 import com.app.rewardsbattle.ui.fragments.WalletFragment;
 import com.app.rewardsbattle.utils.AnalyticsUtil;
 import com.app.rewardsbattle.utils.LocaleHelper;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.unity3d.services.banners.BannerView;
+import com.unity3d.services.banners.UnityBannerSize;
+import android.widget.RelativeLayout;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -87,45 +85,12 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("SMINFO", MODE_PRIVATE);
         if (TextUtils.equals(sp.getString("baner", "no"), "yes")) {
 
-            MobileAds.initialize(this, initializationStatus -> {
-
-            });
-
-            AdView mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-
-            mAdView.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // Code to be executed when an ad finishes loading.
-                    mAdView.setVisibility(View.VISIBLE);
-                }
-
-                @Override
-                public void onAdFailedToLoad(LoadAdError adError) {
-                    // Code to be executed when an ad request fails.
-                    mAdView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdOpened() {
-                    // Code to be executed when an ad opens an overlay that
-                    // covers the screen.
-                }
-
-                @Override
-                public void onAdClicked() {
-                    // Code to be executed when the user clicks on an ad.
-                }
-
-
-                @Override
-                public void onAdClosed() {
-                    // Code to be executed when the user is about to return
-                    // to the app after tapping on an ad.
-                }
-            });
+                        RelativeLayout bannerLayout = findViewById(R.id.banner_container);
+            if (bannerLayout != null) {
+                BannerView bannerView = new BannerView(this, getString(R.string.unity_banner_id), new UnityBannerSize(320, 50));
+                bannerLayout.addView(bannerView);
+                bannerView.load();
+            }
         }
 
 

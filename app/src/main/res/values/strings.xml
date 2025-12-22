@@ -6,9 +6,9 @@
     <string name="api">https://rewardsbattle.in/api/</string>
     <string name="url" translatable="false">https://rewardsbattle.in</string>
     <string name="Rs" formatted="false" translatable="true">\u20B9</string>
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="admob_baner">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="admob_reward">ca-app-pub-3940256099942544/5354046379</string>
+    <string name="unity_game_id">5951426</string>
+    <string name="unity_banner_id">banner</string>
+    <string name="unity_rewarded_id">video</string>
 
     <string name="default_web_client_id">0</string>
 

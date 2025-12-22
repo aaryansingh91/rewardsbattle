@@ -11,6 +11,9 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 
 import com.app.rewardsbattle.ui.activities.NoInternetActivity;
+import com.unity3d.ads.IUnityAdsInitializationListener;
+import com.unity3d.ads.UnityAds;
+import com.app.rewardsbattle.R;
 
 import java.util.List;
 
@@ -78,6 +81,18 @@ public class MyApp extends Application {
             }
         };
         tipsHanlder.post(tipsRunnable);
+
+        UnityAds.initialize(getApplicationContext(), getString(R.string.unity_game_id), true, new IUnityAdsInitializationListener() {
+            @Override
+            public void onInitializationComplete() {
+                // initialization complete
+            }
+
+            @Override
+            public void onInitializationFailed(UnityAds.UnityAdsInitializationError error, String message) {
+                // initialization failed
+            }
+        });
     }
 
     private boolean isNetworkAvailable() {

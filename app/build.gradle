@@ -108,7 +108,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:23.0.8'
     implementation 'com.google.firebase:firebase-auth:21.0.8'
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
-    implementation 'com.google.android.gms:play-services-ads:22.1.0'
+    implementation 'com.unity3d.ads:unity-ads:4.9.2'
     implementation 'androidx.browser:browser:1.4.0'
     implementation 'com.github.faruktoptas:FancyShowCaseView:1.3.9'
     implementation 'com.google.firebase:firebase-database:20.0.6'

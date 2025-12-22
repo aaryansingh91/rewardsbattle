@@ -33,14 +33,12 @@ import com.app.rewardsbattle.utils.AnalyticsUtil;
 import com.app.rewardsbattle.utils.LoadingDialog;
 import com.app.rewardsbattle.utils.LocaleHelper;
 import com.app.rewardsbattle.utils.UserLocalStore;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback;
+import com.unity3d.ads.IUnityAdsLoadListener;
+import com.unity3d.ads.IUnityAdsShowListener;
+import com.unity3d.ads.UnityAds;
+import com.unity3d.services.banners.BannerView;
+import com.unity3d.services.banners.UnityBannerSize;
+import android.widget.RelativeLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
@@ -57,7 +55,7 @@ public class WatchAndEarnActivity extends AppCompatActivity {
 
     TextView watchAndEarnTitle;
     TextView completeTaskTitle;
-    private RewardedInterstitialAd rewardedInterstitialAd;
+    // private RewardedInterstitialAd rewardedInterstitialAd;
     Button watchNow;
     RequestQueue mQueue;
     LoadingDialog loadingDialog;
@@ -117,41 +115,12 @@ public class WatchAndEarnActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("SMINFO", MODE_PRIVATE);
         if (TextUtils.equals(sp.getString("baner", "no"), "yes")) {
 
-            AdView mAdView = findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
-
-            mAdView.setAdListener(new AdListener() {
-                @Override
-                public void onAdLoaded() {
-                    // Code to be executed when an ad finishes loading.
-                    mAdView.setVisibility(View.VISIBLE);
-                }
-
-                @Override
-                public void onAdFailedToLoad(LoadAdError adError) {
-                    // Code to be executed when an ad request fails.
-                    mAdView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdOpened() {
-                    // Code to be executed when an ad opens an overlay that
-                    // covers the screen.
-                }
-
-                @Override
-                public void onAdClicked() {
-                    // Code to be executed when the user clicks on an ad.
-                }
-
-
-                @Override
-                public void onAdClosed() {
-                    // Code to be executed when the user is about to return
-                    // to the app after tapping on an ad.
-                }
-            });
+            RelativeLayout bannerLayout = findViewById(R.id.banner_container);
+            if (bannerLayout != null) {
+                BannerView bannerView = new BannerView(this, getString(R.string.unity_banner_id), new UnityBannerSize(320, 50));
+                bannerLayout.addView(bannerView);
+                bannerView.load();
+            }
         }
 
         context = LocaleHelper.setLocale(WatchAndEarnActivity.this);
@@ -229,7 +198,6 @@ public class WatchAndEarnActivity extends AppCompatActivity {
         srequest.setShouldCache(false);
         mQueue.add(srequest);
         watchNow.setOnClickListener(view -> {
-            rewardedInterstitialAd = null;
             loadRewardedInterstitialAd();
         });
     }
@@ -237,34 +205,22 @@ public class WatchAndEarnActivity extends AppCompatActivity {
     private void loadRewardedInterstitialAd() {
         watchNow.setText(resources.getString(R.string.please_wait));
         watchNow.setEnabled(false);
+        isLoadingAds = true;
+        UnityAds.load(getString(R.string.unity_rewarded_id), new IUnityAdsLoadListener() {
+            @Override
+            public void onUnityAdsAdLoaded(String placementId) {
+                Log.d(TAG, "onAdLoaded");
+                showRewardedVideo();
+            }
 
-        if (rewardedInterstitialAd == null) {
-            isLoadingAds = true;
-            AdRequest adRequest = new AdRequest.Builder().build();
-            // Use the test ad unit ID to load an ad.
-            RewardedInterstitialAd.load(
-                    WatchAndEarnActivity.this,
-                    resources.getString(R.string.admob_reward),
-                    adRequest,
-                    new RewardedInterstitialAdLoadCallback() {
-                        @Override
-                        public void onAdLoaded(@NonNull RewardedInterstitialAd ad) {
-                            Log.d(TAG, "onAdLoaded");
-                            rewardedInterstitialAd = ad;
-                            showRewardedVideo(); // Move this line inside the onAdLoaded callback
-                        }
-
-                        @Override
-                        public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                            Log.d(TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
-
-                            // Handle the error.
-                            watchNow = findViewById(R.id.watchnow);
-                            watchNow.setText(resources.getString(R.string.unable_to_load_video));
-                            watchNow.setEnabled(false);
-                        }
-                    });
-        }
+            @Override
+            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                Log.d(TAG, "onAdFailedToLoad: " + message);
+                watchNow = findViewById(R.id.watchnow);
+                watchNow.setText(resources.getString(R.string.unable_to_load_video));
+                watchNow.setEnabled(false);
+            }
+        });
     }
 
     public void countdown() {
@@ -350,39 +306,26 @@ public class WatchAndEarnActivity extends AppCompatActivity {
     }
 
     private void showRewardedVideo() {
-        rewardedInterstitialAd.setFullScreenContentCallback(
-                new FullScreenContentCallback() {
-                    @Override
-                    public void onAdShowedFullScreenContent() {
-                        watchNow.setEnabled(false);
-                    }
+        UnityAds.show(this, getString(R.string.unity_rewarded_id), new IUnityAdsShowListener() {
+            @Override
+            public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
+                 watchNow = findViewById(R.id.watchnow);
+                 watchNow.setText(resources.getString(R.string.unable_to_load_video));
+                 watchNow.setEnabled(false);
+            }
 
-                    @Override
-                    public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                        watchNow = findViewById(R.id.watchnow);
-                        watchNow.setText(resources.getString(R.string.unable_to_load_video));
-                        watchNow.setEnabled(false);
-                    }
+            @Override
+            public void onUnityAdsShowStart(String placementId) {
+                 watchNow.setEnabled(false);
+            }
 
-                    @Override
-                    public void onAdDismissedFullScreenContent() {
-                        if (current < total) {
-                            //remain to watch video
-                            watchNow.setEnabled(true);
-                            watchNow.setText(resources.getString(R.string.watch_now));
-                        } else {
-                            //finish all video
-                            watchNow.setEnabled(false);
-                            watchNow.setText(resources.getString(R.string.task_completed));
-                            countdown();
-                        }
-                    }
-                });
+            @Override
+            public void onUnityAdsShowClick(String placementId) {
+            }
 
-        Activity activityContext = WatchAndEarnActivity.this;
-        rewardedInterstitialAd.show(
-                activityContext,
-                rewardItem -> {
+            @Override
+            public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
+                if (state.equals(UnityAds.UnityAdsShowCompletionState.COMPLETED)) {
                     watchNow.setText(resources.getString(R.string.watch_now));
                     watchNow.setEnabled(true);
                     // Handle the reward.
@@ -427,6 +370,17 @@ public class WatchAndEarnActivity extends AppCompatActivity {
                     };
                     srequest.setShouldCache(false);
                     mQueue.add(srequest);
-                });
+                } else {
+                     if (current < total) {
+                        watchNow.setEnabled(true);
+                        watchNow.setText(resources.getString(R.string.watch_now));
+                    } else {
+                        watchNow.setEnabled(false);
+                         watchNow.setText(resources.getString(R.string.task_completed));
+                        countdown();
+                    }
+                }
+            }
+        });
     }
 }

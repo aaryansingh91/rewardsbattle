@@ -388,14 +388,14 @@
     <!--howto_view-->
     <string name="play_in_youtube">Play in youtube</string>
     <!--introduction1-->
-    <string name="select_a_game">SELECT A GAME</string>
-    <string name="intro1desc">Join the contest of your favorite game and win real money</string>
+    <string name="select_a_game">Login</string>
+    <string name="intro1desc">Login easily with google</string>
     <!--introduction2-->
-    <string name="join_a_match">JOIN A MATCH</string>
-    <string name="intro2desc">Join content as per your gameplay like SOLO, DUO or SQUAD</string>
+    <string name="join_a_match">Ads coins</string>
+    <string name="intro2desc">Earn coins by watching ads</string>
     <!--introduction3-->
-    <string name="Reder_And_Earn">REFER &amp; EARN</string>
-    <string name="intro3desc">Invite your friends to play their favorite game and get rewarded</string>
+    <string name="Reder_And_Earn">Earn Rewards</string>
+    <string name="intro3desc">Play Lottery or Buy customized products.</string>
     <!--me_home-->
     <string name="me">Me</string>
     <string name="balance">Balance</string>

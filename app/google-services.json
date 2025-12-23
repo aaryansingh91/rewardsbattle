@@ -12,7 +12,12 @@
           "package_name": "com.app.rewardsbattle"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "805900822846-eta5dpdk9sqlg5ns9epln3fpue28d0c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyArS9h4MIVfaR-iEkJ0zQcibNBRud3K00w"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805900822846-eta5dpdk9sqlg5ns9epln3fpue28d0c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

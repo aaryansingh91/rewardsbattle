@@ -179,15 +179,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity {
                             pointInt = Integer.parseInt(point);
                             if (withdraw_amount.getText().toString().trim().length() > 0) {
 
-                                withdrawNote.setText(TextUtils.concat(resources.getString(R.string.you_will_get_), " ", selectedCurrencySymbol, String.format("%.2f", Double.parseDouble(withdraw_amount.getText().toString().trim()) / (double) pointInt)));
-                                if (TextUtils.equals(selectedCurrencySymbol, "₹")) {
-                                    Typeface font = Typeface.DEFAULT;
-                                    SpannableStringBuilder SS = new SpannableStringBuilder(resources.getString(R.string.Rs));
-                                    SS.setSpan(new CustomTypefaceSpan("", font), 0, 1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-                                    withdrawNote.setText(TextUtils.concat(Html.fromHtml(getString(R.string.you_will_get_)), " ", SS, Html.fromHtml(String.format("%.2f", Double.parseDouble(withdraw_amount.getText().toString().trim()) / (double) pointInt))));
-                                    withdrawNote.setClickable(true);
-                                    withdrawNote.setMovementMethod(LinkMovementMethod.getInstance());
-                                }
+                                withdrawNote.setText(TextUtils.concat(resources.getString(R.string.you_will_get_), " ", String.format("%.2f", Double.parseDouble(withdraw_amount.getText().toString().trim()) / (double) pointInt)));
 
                             } else {
                                 withdrawNote.setText("");
@@ -269,15 +261,7 @@ public class WithdrawMoneyActivity extends AppCompatActivity {
                         withdraw_btn.setEnabled(true);
                     withdraw_btn.setBackgroundColor(getResources().getColor(R.color.orange));
 
-                    withdrawNote.setText(TextUtils.concat(resources.getString(R.string.you_will_get_), " ", selectedCurrencySymbol, String.format("%.2f", Double.parseDouble(String.valueOf(charSequence)) / (double) pointInt)));
-                    if (TextUtils.equals(selectedCurrencySymbol, "₹")) {
-                        Typeface font = Typeface.DEFAULT;
-                        SpannableStringBuilder SS = new SpannableStringBuilder(resources.getString(R.string.Rs));
-                        SS.setSpan(new CustomTypefaceSpan("", font), 0, 1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-                        withdrawNote.setText(TextUtils.concat(Html.fromHtml(getString(R.string.you_will_get_)), " ", SS, Html.fromHtml(String.format("%.2f", Double.parseDouble(String.valueOf(charSequence)) / (double) pointInt))));
-                        withdrawNote.setClickable(true);
-                        withdrawNote.setMovementMethod(LinkMovementMethod.getInstance());
-                    }
+                    withdrawNote.setText(TextUtils.concat(resources.getString(R.string.you_will_get_), " ", String.format("%.2f", Double.parseDouble(String.valueOf(charSequence)) / (double) pointInt)));
 
                 } else {
                     withdrawNote.setText("");

@@ -97,7 +97,7 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.My
 
         if(resultType.equals("1")){
             builder.append(Html.fromHtml(resources.getString(R.string.PRIZE_POOL)+"<br>"))
-                    .append("₹")
+//                    .append("₹")
                     .append(Html.fromHtml("<b>"+tournamentData.getWinprize()));
 
         }else {
@@ -110,7 +110,7 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.My
         builder = new SpannableStringBuilder();
         if(resultType.equals("1")){
             builder.append(Html.fromHtml(resources.getString(R.string.PER_KILL)+"<br>"))
-                    .append("₹")
+//                    .append("₹")
                     .append(Html.fromHtml("<b>"+tournamentData.getPerkill()));
 
         }else {

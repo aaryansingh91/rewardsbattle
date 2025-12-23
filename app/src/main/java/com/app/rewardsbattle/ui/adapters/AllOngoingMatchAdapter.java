@@ -77,7 +77,7 @@ public class AllOngoingMatchAdapter extends RecyclerView.Adapter<AllOngoingMatch
 
         if(resultType.equals("1")){
             builder.append(Html.fromHtml(resources.getString(R.string.PRIZE_POOL)+"<br>"))
-                    .append("₹")
+//                    .append("₹")
                     .append(Html.fromHtml("<b>"+data.getWinprize()));
 
         }else {
@@ -90,7 +90,7 @@ public class AllOngoingMatchAdapter extends RecyclerView.Adapter<AllOngoingMatch
         builder = new SpannableStringBuilder();
         if(resultType.equals("1")){
             builder.append(Html.fromHtml(resources.getString(R.string.PER_KILL)+"<br>"))
-                    .append("₹")
+//                    .append("₹")
                     .append(Html.fromHtml("<b>"+data.getPerkill()));
 
         }else {
